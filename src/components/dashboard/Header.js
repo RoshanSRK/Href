@@ -2,7 +2,6 @@ import {
   createStyles,
   Header,
   Group,
-  Button,
   Divider,
   Box,
   Burger,
@@ -94,7 +93,7 @@ export default function HeaderMegaMenu() {
     { name: "Expenses", link: "/expenses" },
     { name: "Goals", link: "/goals" },
     { name: "Tools", link: "/tools" },
-    { name: "Log", link: "/log" },
+    { name: "Log", link: "/history" },
   ];
 
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
