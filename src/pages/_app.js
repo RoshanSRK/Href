@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }) {
           withGlobalStyles
           withNormalizeCSS
         >
-          {" "} 
+          {" "}
           <Head>
             <meta charSet="utf-8" />
             <link
