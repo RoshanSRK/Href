@@ -30,7 +30,7 @@ export default function App({ Component, pageProps }) {
               content="width=device-width, initial-scale=1"
             />
             <meta name="description" content="description of website here" />
-            <title>qkwiqq</title>
+            <title>Href</title>
           </Head>
           <Container>
             <Component {...pageProps} />
