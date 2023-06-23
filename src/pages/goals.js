@@ -22,16 +22,10 @@ const GoalsPage = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Do something with the goals (e.g., send them to the server)
-    console.log(shortTermGoals);
-  };
-
   return (
     <Container size="sm">
       <Paper shadow="sm" padding="lg">
-        <Flex justify={"center"} gap={10}>
+        <Flex justify={"space-between"}>
           <Button
             variant="outline"
             color="blue"
