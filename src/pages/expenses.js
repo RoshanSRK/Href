@@ -89,22 +89,25 @@ function MantineForm() {
   return (
     <Container shadow="sm" padding="lg">
       <Flex justify="center" direction="column">
+
         <h2>Income</h2>
         {incomeInputs.map((input) => (
           <Flex
+          justify="space-between"
             key={input.id}
             style={{
               marginBottom: 12,
               padding: 10,
               display: "flex",
               outline: "2px solid grey",
+
             }}
           >
             <TextInput
               w="10"
               label={input.label}
               required
-              style={{ marginRight: 300, width: "450px" }}
+              style={{  width: "600px" }}
             />
             <Button
               color="red"
@@ -124,37 +127,36 @@ function MantineForm() {
 
         <h2>Savings</h2>
         {savingInputs.map((input) => (
-          <div key={input.id} style={{ marginBottom: 10, display: "flex" }}>
-            <Flex
-              key={input.id}
-              style={{
-                marginBottom: 12,
-                padding: 10,
-                display: "flex",
-                outline: "2px solid grey",
-              }}
+          <Flex
+          justify="space-between"
+            key={input.id}
+            style={{
+              marginBottom: 12,
+              padding: 10,
+              display: "flex",
+              outline: "2px solid grey",
+            }}
+          >
+            <TextInput
+              w="10"
+              label={input.label}
+              required
+              style={{ width: "600px" }}
+            />
+            <Button
+              color="red"
+              onClick={() => handleDeleteInput("saving", "", input.id)}
+              style={{ alignSelf: "flex-end" }}
             >
-              <TextInput
-                w="10"
-                label={input.label}
-                required
-                style={{ marginRight: 300, width: "450px" }}
-              />
-              <Button
-                color="red"
-                onClick={() => handleDeleteInput("saving", "", input.id)}
-                style={{ alignSelf: "flex-end" }}
-              >
-                Delete
-              </Button>
-            </Flex>
-          </div>
+              Delete
+            </Button>
+          </Flex>
         ))}
         <Button
           onClick={() => handleAddInput("saving")}
           style={{ marginBottom: 10 }}
         >
-          Add Saving
+          Add saving
         </Button>
 
         <h2>Expenses</h2>
@@ -162,8 +164,9 @@ function MantineForm() {
           <div key={subheading}>
             <h3>{subheading}</h3>
             {expenseInputs[subheading].map((input) => (
-              <div key={input.id} style={{ marginBottom: 10, display: "flex" }}>
+             // <div key={input.id} style={{ marginBottom: 10, display: "flex" }}>
                 <Flex
+                justify="space-between"
                   key={input.id}
                   style={{
                     marginBottom: 12,
@@ -176,7 +179,7 @@ function MantineForm() {
                     w="10"
                     label={input.label}
                     required
-                    style={{ marginRight: 300, width: "450px" }}
+                    style={{ width: "600px" }}
                   />
                   <Button
                     color="red"
@@ -188,14 +191,20 @@ function MantineForm() {
                     Delete
                   </Button>
                 </Flex>
-              </div>
+             
             ))}
+
+
+
             <Button
               onClick={() => handleAddInput("expense", subheading)}
               style={{ marginBottom: 10 }}
+              w="100%"
             >
               Add {subheading} Expense
             </Button>
+
+
           </div>
         ))}
 
