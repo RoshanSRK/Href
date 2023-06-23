@@ -3,7 +3,6 @@ import Text from './Text';
 import DropDown from './DropDown';
 import { CalcCtx } from './context/CalcValueContext';
 import { GraphCtx } from './context/GraphDataContext';
-// import { GraphItem } from '../types';
 
 import { Paper, Text as MantineText, Button, Grid } from '@mantine/core';
 
@@ -94,7 +93,7 @@ export default function Form() {
         <div className="mt-10">
             <Grid>
                 <Grid.Col md={6} lg={3}>
-                    <Paper shadow="sm" radius="lg" p="md">
+                    <Paper style={{ height: '175px' }} shadow="sm" radius="lg" p="md">
                         <span className="block text-sm mb-1">I have a</span>
                         <Text
                             defaultValue={{ name: 'initial', value: calcCtx.initial }}
@@ -106,7 +105,7 @@ export default function Form() {
                     </Paper>
                 </Grid.Col>
                 <Grid.Col md={6} lg={3}>
-                    <Paper shadow="sm" radius="lg" p="md">
+                    <Paper style={{ height: '175px' }} shadow="sm" radius="lg" p="md">
                         <span className="block text-sm mb-1">I&apos;ll add </span>
                         <Text
                             defaultValue={{ name: 'payment', value: calcCtx.payment }}
@@ -128,7 +127,7 @@ export default function Form() {
                     </Paper>
                 </Grid.Col>
                 <Grid.Col md={6} lg={3}>
-                    <Paper shadow="sm" radius="lg" p="md">
+                    <Paper style={{ height: '175px' }} shadow="sm" radius="lg" p="md">
                         <span className="block text-sm mb-1">I&apos;ll get a</span>
                         <Text
                             defaultValue={{ name: "interest", value: calcCtx.interest }}
@@ -152,7 +151,8 @@ export default function Form() {
                         </span>
                     </Paper>
                 </Grid.Col>
-                <Grid.Col md={6} lg={3}><Paper shadow="sm" radius="lg" p="md">
+                <Grid.Col md={6} lg={3}>
+                    <Paper style={{ height: '175px' }} shadow="sm" radius="lg" p="md">
                     <span className="block text-sm mb-1">I&apos;ve got</span>
                     <Text
                         defaultValue={{ name: "years", value: 5 }}

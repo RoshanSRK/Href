@@ -1,16 +1,9 @@
 import React, { useState } from 'react'
 import { CalcCtx } from '../components/tools/context/CalcValueContext'
 import { GraphCtx } from '../components/tools/context/GraphDataContext'
-// import 'tailwindcss/base';
-// import 'tailwindcss/components';
-// import 'tailwindcss/utilities';
 import { Container, Button, Group, Grid, Alert } from "@mantine/core";
 import { createStyles, Paper, Text, Title, useMantineTheme, rem } from '@mantine/core';
 
-// import { CalcProps, GraphProps } from '../types'
-// import Head from 'next/head'
-// import Footer from '../components/Footer'
-// import Header from '../components/Header'
 import Tips from '../components/tools/Tips'
 import Form from '../components/tools/Form'
 import Graph from '../components/tools/Graph'
@@ -41,8 +34,9 @@ export default function Home() {
                         Compound Interest Calculator.
                     </h1>
                     <p className='text-center'>
-                        Get your money in the market and watch it grow over time. 
+                        Get your money in the market and watch it grow over time.
                     </p>
+                    {/* This generates the main part of the page,i.e, the form, the graphs and the yealy breakdown */}
                     <CalcCtx.Provider value={[calcCtx, setCalcCtx]}>
                         <GraphCtx.Provider value={[graphCtx, setGraphCtx]}>
                             <Form />
@@ -51,12 +45,10 @@ export default function Home() {
                         </GraphCtx.Provider>
                     </CalcCtx.Provider>
                 </div>
-                <div>
-                    <div className='flex flex-col sm:flex-row justify-center items-center'></div>
-                </div>
-                <div></div>
+
                 <Tips />
-                {/* <Footer /> */}
+                <br/><br/>
+                
             </main>
         </div>
     )
