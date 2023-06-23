@@ -12,16 +12,20 @@
     "@emotion/react": "^11.11.1",
     "@emotion/server": "^11.11.0",
     "@mantine/core": "^6.0.14",
+    "@mantine/dates": "^6.0.14",
     "@mantine/form": "^6.0.14",
     "@mantine/hooks": "^6.0.14",
     "@mantine/next": "^6.0.14",
     "@tabler/icons-react": "^2.22.0",
+    "chart.js": "^4.3.0",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.7",
     "next": "13.4.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tabler-icons-react": "^1.56.0",
     "uniqid": "^5.4.0"
+    "react-slider": "^2.0.5",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "18.2.0"
   }
 }
