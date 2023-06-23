@@ -126,7 +126,7 @@ export default function HeaderMegaMenu() {
                 fw={700}
               >
                 {" "}
-                PigMoney
+                moFinans
               </Text>
             </Flex>
           </Link>
@@ -137,7 +137,7 @@ export default function HeaderMegaMenu() {
           >
             {links}
           </Group>
-          
+
           <Group className={classes.hiddenMobile}>
             <ActionIcon
               variant="outline"
