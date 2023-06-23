@@ -13,7 +13,7 @@ function MantineForm() {
     const { colorScheme, toggleColorScheme } = useMantineColorScheme();
     //
 
-
+//Render the inputs
   const [incomeInputs, setIncomeInputs] = useState([{ id: 1, label: 'Income 1' }]);
   const [savingInputs, setSavingInputs] = useState([{ id: 1, label: 'Saving 1' }]);
   const [expenseInputs, setExpenseInputs] = useState({
@@ -54,6 +54,7 @@ function MantineForm() {
     }
   };
 
+  //Delete Button for each input
   const handleDeleteInput = (section, subheading, id) => {
     switch (section) {
       case 'income':
@@ -82,6 +83,7 @@ function MantineForm() {
 
 
   //---------------------------------------------------------------------------------------------
+  
   return (
     <Container shadow="sm" padding="lg" >
         <Flex
@@ -90,7 +92,7 @@ function MantineForm() {
         >
     
 
-
+       {/* Dark Mode Buttons */}
       <Group position="center" my="xl">
           <ActionIcon
             onClick={() => toggleColorScheme()}
@@ -157,6 +159,7 @@ function MantineForm() {
           Add Saving
         </Button>
 
+       
         <h2>Expenses</h2>
         {Object.keys(expenseInputs).map((subheading) => (
           <div key={subheading}>
