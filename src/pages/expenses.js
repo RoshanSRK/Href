@@ -1,184 +1,97 @@
-import Head from "next/head";
-import { TextInput, Checkbox, Button, Group, Box } from "@mantine/core";
-import { useForm } from "@mantine/form";
-import { Container } from "@mantine/core";
-import { useState, useRef } from "react";
-import { Autocomplete, Loader } from "@mantine/core";
-import { useMantineColorScheme, ActionIcon } from "@mantine/core";
-import { createStyles, rem } from "@mantine/core";
-import { IconSun, IconMoonStars } from "@tabler/icons-react";
+import React, { useState } from 'react';
+import { Button, Card, TextInput } from '@mantine/core';
+import uniqid from 'uniqid';
+import { useMantineColorScheme, ActionIcon, Group } from '@mantine/core';
+import { IconSun, IconMoonStars } from '@tabler/icons-react';
+import { Container } from '@mantine/core';
+import { Flex } from '@mantine/core';
 
 
-const useStyles = createStyles((theme, { floating }) => ({
-  root: {
-    position: 'relative',
-  },
+function MantineForm() {
 
-  label: {
-    position: 'absolute',
-    zIndex: 2,
-    top: rem(7),
-    left: theme.spacing.sm,
-    pointerEvents: 'none',
-    color: floating
-      ? theme.colorScheme === 'dark'
-        ? theme.white
-        : theme.black
-      : theme.colorScheme === 'dark'
-      ? theme.colors.dark[3]
-      : theme.colors.gray[5],
-    transition: 'transform 150ms ease, color 150ms ease, font-size 150ms ease',
-    transform: floating ? `translate(-${theme.spacing.sm}, ${rem(-28)})` : 'none',
-    fontSize: floating ? theme.fontSizes.xs : theme.fontSizes.sm,
-    fontWeight: floating ? 500 : 400,
-  },
-
-  required: {
-    transition: 'opacity 150ms ease',
-    opacity: floating ? 1 : 0,
-  },
-
-  input: {
-    '&::placeholder': {
-      transition: 'color 150ms ease',
-      color: !floating ? 'transparent' : undefined,
-    },
-  },
-}));
-
-export default function Home()
- {
-  const timeoutRef = useRef(-1);
-  const [value, setValue] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const [focused, setFocused] = useState(false);
-  
-
-  const useStyles = createStyles((theme, { floating }) => ({
-    root: {
-      position: "relative",
-    },
-
-    label: {
-      position: "absolute",
-      zIndex: 2,
-      top: rem(7),
-      left: theme.spacing.sm,
-      pointerEvents: "none",
-      color: floating
-        ? theme.colorScheme === "dark"
-          ? theme.white
-          : theme.black
-        : theme.colorScheme === "dark"
-        ? theme.colors.dark[3]
-        : theme.colors.gray[5],
-      transition:
-        "transform 150ms ease, color 150ms ease, font-size 150ms ease",
-      transform: floating
-        ? `translate(-${theme.spacing.sm}, ${rem(-28)})`
-        : "none",
-      fontSize: floating ? theme.fontSizes.xs : theme.fontSizes.sm,
-      fontWeight: floating ? 500 : 400,
-    },
-
-    required: {
-      transition: "opacity 150ms ease",
-      opacity: floating ? 1 : 0,
-    },
-
-    input: {
-      "&::placeholder": {
-        transition: "color 150ms ease",
-        color: !floating ? "transparent" : undefined,
-      },
-    },
-  }));
+    //add dark mode
+    const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+    //
 
 
-  const { classes } = useStyles({
-    floating: value.trim().length !== 0 || focused,
+  const [incomeInputs, setIncomeInputs] = useState([{ id: 1, label: 'Income 1' }]);
+  const [savingInputs, setSavingInputs] = useState([{ id: 1, label: 'Saving 1' }]);
+  const [expenseInputs, setExpenseInputs] = useState({
+    Health: [{ id: 1, label: 'Health Expense 1' }],
+    Grocery: [{ id: 1, label: 'Grocery Expense 1' }],
+    Transport: [{ id: 1, label: 'Transport Expense 1' }],
+    Food: [{ id: 1, label: 'Food Expense 1' }],
+    Entertainment: [{ id: 1, label: 'Entertainment Expense 1' }],
+    'Personal Care': [{ id: 1, label: 'Personal Care Expense 1' }],
   });
 
-  
-
-  const handleChange = (val) => {
-    window.clearTimeout(timeoutRef.current);
-    setValue(val);
-    setData([]);
-
-    if (val.trim().length === 0 || val.includes("@")) {
-      setLoading(false);
-    } else {
-      setLoading(true);
-      timeoutRef.current = window.setTimeout(() => {
-        setLoading(false);
-        setData(
-          ["gmail.com", "outlook.com", "yahoo.com"].map(
-            (provider) => `${val}@${provider}`
-          )
-        );
-      }, 1000);
+  const handleAddInput = (section, subheading) => {
+    switch (section) {
+      case 'income':
+        setIncomeInputs((inputs) => [
+          ...inputs,
+          { id: uniqid(), label: `Income ${inputs.length + 1}` },
+        ]);
+        break;
+      case 'saving':
+        setSavingInputs((inputs) => [
+          ...inputs,
+          { id: uniqid(), label: `Saving ${inputs.length + 1}` },
+        ]);
+        break;
+      case 'expense':
+        setExpenseInputs((inputs) => {
+          const newInputs = { ...inputs };
+          newInputs[subheading] = [
+            ...(newInputs[subheading] || []),
+            { id: uniqid() || 1, label: `${subheading} Expense ${newInputs[subheading]?.length + 1 || 1}` },
+          ];
+          return newInputs;
+        });
+        break;
+      default:
+        break;
     }
   };
 
-  const form = useForm({
-    initialValues: {
-      email: "",
-      termsOfService: false,
-    },
+  const handleDeleteInput = (section, subheading, id) => {
+    switch (section) {
+      case 'income':
+        setIncomeInputs((inputs) => inputs.filter((input) => input.id !== id));
+        break;
+      case 'saving':
+        setSavingInputs((inputs) => inputs.filter((input) => input.id !== id));
+        break;
+      case 'expense':
+        setExpenseInputs((inputs) => {
+          const newInputs = { ...inputs };
+          newInputs[subheading] = (newInputs[subheading] || []).filter((input) => input.id !== id);
+          return newInputs;
+        });
+        break;
+      default:
+        break;
+    }
+  };
 
-    validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
-    },
-  });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle form submission logic here
+  };
 
+
+
+  //---------------------------------------------------------------------------------------------
   return (
-
-
-
+    <Container shadow="sm" padding="lg" >
+        <Flex
+        justify = "center"
+        direction="column"
+        >
     
 
 
-
-
-
-
-
-
-
-
-    <Box maw={300} mx="auto">
-
-      <form onSubmit={form.onSubmit((values) => console.log(values))}>
-        <TextInput
-          withAsterisk
-          label="Email"
-          placeholder="your@email.com"
-          {...form.getInputProps("email")}
-        />
-
-        <Checkbox
-          mt="md"
-          label="I agree to sell my privacy"
-          {...form.getInputProps("termsOfService", { type: "checkbox" })}
-        />
-
-        <Group position="right" mt="md">
-          <Button type="submit">Submit</Button>
-        </Group>
-
-        <Autocomplete
-          value={value}
-          data={data}
-          onChange={handleChange}
-          rightSection={loading ? <Loader size="1rem" /> : null}
-          label="Async Autocomplete data"
-          placeholder="Your email"
-        />
-
-        <Group position="center" my="xl">
+      <Group position="center" my="xl">
           <ActionIcon
             onClick={() => toggleColorScheme()}
             size="lg"
@@ -201,49 +114,83 @@ export default function Home()
           </ActionIcon>
         </Group>
 
+        <h2>Income</h2>
+        {incomeInputs.map((input) => (
+         
+         
+         <Flex key={input.id} style={{ marginBottom: 12, padding:10, display: 'flex' ,outline:'1px solid red'}}>
+            <TextInput  w='10' label={input.label} required style={{ marginRight: 300, width:"450px" }} />
+            <Button
+              color="red"
+              onClick={() => handleDeleteInput('income', '', input.id)}
+              style={{ alignSelf: 'flex-end' }}
+            >
+              Delete
+            </Button>
+        </Flex>
 
-        <TextInput
-      label="Floating label"
-      placeholder=" it also has a placeholder"
-      required
-      classNames={classes}
-      value={value}
-      onChange={(event) => setValue(event.currentTarget.value)}
-      onFocus={() => setFocused(true)}
-      onBlur={() => setFocused(false)}
-      mt="md"
-      autoComplete="nope"
-    />
+        ))}
+        <Button onClick={() => handleAddInput('income')} style={{ marginBottom: 10 }}>
+          Add Income
+        </Button>
 
-<TextInput 
-      label="Floating label"
-      placeholder=" it also has a placeholder"
-      required
-      classNames={classes}
-      value={value}
-      onChange={(event) => setValue(event.currentTarget.value)}
-      onFocus={() => setFocused(true)}
-      onBlur={() => setFocused(false)}
-      mt="md"
-      autoComplete="nope"
-    />
+        <h2>Savings</h2>
+        {savingInputs.map((input) => (
+          <div key={input.id} style={{ marginBottom: 10, display: 'flex' }}>
 
-        
-      </form>
+        <Flex key={input.id} style={{ marginBottom: 12, padding:10, display: 'flex' ,outline:'1px solid red'}}>
+            <TextInput  w='10' label={input.label} required style={{ marginRight: 300, width:"450px" }} />
+            <Button
+              
+              color="red"
+              onClick={() => handleDeleteInput('saving', '', input.id)}
+              style={{ alignSelf: 'flex-end' }}
+            >
+              Delete
+        </Button>
+        </Flex>
 
 
+          </div>
+        ))}
+        <Button onClick={() => handleAddInput('saving')} style={{ marginBottom: 10 }}>
+          Add Saving
+        </Button>
+
+        <h2>Expenses</h2>
+        {Object.keys(expenseInputs).map((subheading) => (
+          <div key={subheading}>
+            <h3>{subheading}</h3>
+            {expenseInputs[subheading].map((input) => (
+
+              <div key={input.id} style={{ marginBottom: 10, display: 'flex' }}>
 
 
+            <Flex key={input.id} style={{ marginBottom: 12, padding:10, display: 'flex' ,outline:'1px solid red'}}>
+            <TextInput  w='10' label={input.label} required style={{ marginRight: 300, width:"450px" }} />
+                <Button
+                  variant="link"
+                  color="red"
+                  onClick={() => handleDeleteInput('expense', subheading, input.id)}
+                  style={{ alignSelf: 'flex-end' }}
+                >
+                  Delete
+                </Button>
+            </Flex>
 
+              </div>
+            ))}
+            <Button onClick={() => handleAddInput('expense', subheading)} style={{ marginBottom: 10 }}>
+              Add {subheading} Expense
+            </Button>
+          </div>
+        ))}
 
-    </Box>
+        <Button type="submit">Submit</Button>
+     
+      </Flex>
+    </Container>
   );
-
-
-
-
-
-
-
-
 }
+
+export default MantineForm;
