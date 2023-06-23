@@ -88,7 +88,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function HeaderMegaMenu({ loggedIn }) {
+export default function HeaderMegaMenu() {
   const tabs = [
     { name: "Home", link: "/" },
     { name: "Expenses", link: "/expenses" },
@@ -130,7 +130,6 @@ export default function HeaderMegaMenu({ loggedIn }) {
               </Text>
             </Flex>
           </Link>
-
           <Group
             sx={{ height: "100%" }}
             spacing={0}
@@ -138,7 +137,7 @@ export default function HeaderMegaMenu({ loggedIn }) {
           >
             {links}
           </Group>
-
+          
           <Group className={classes.hiddenMobile}>
             <ActionIcon
               variant="outline"
@@ -153,7 +152,6 @@ export default function HeaderMegaMenu({ loggedIn }) {
               )}
             </ActionIcon>{" "}
           </Group>
-
           <Burger
             opened={drawerOpened}
             onClick={toggleDrawer}
