@@ -61,7 +61,7 @@ export default function Home() {
       <Title mt={50}>Expenses</Title>
       <Container size={550}>
         <PieChart
-          title="Expenses by categories"
+          titleName="Expenses by categories"
           labelsArray={expensesCategories}
           dataArray={expensesCategories.map((e) => Math.random() * 1000)}
         />
@@ -76,7 +76,7 @@ export default function Home() {
 
       <Title mt={50}>Recommendations</Title>
       <Alert icon={<IconAlertCircle size="1rem" />} title="Bummer!" color="red">
-        You are spending too much money
+        You have spent Rs 1000 more than last month.
       </Alert>
     </Container>
   );
