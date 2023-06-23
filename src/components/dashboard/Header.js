@@ -91,6 +91,7 @@ export default function HeaderMegaMenu({ loggedIn }) {
     { name: "Expenses", link: "/expenses" },
     { name: "Goals", link: "/goals" },
     { name: "Tools", link: "/tools" },
+    { name: "Log", link: "/log" },
   ];
 
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
@@ -104,7 +105,7 @@ export default function HeaderMegaMenu({ loggedIn }) {
   ));
 
   return (
-    <Box pb={120}>
+    <Box pb={60}>
       <Header height={60} px="md">
         <Group position="apart" sx={{ height: "100%" }}>
           <Link href="/" style={{ textDecoration: "none", color: "white" }}>
