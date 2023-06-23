@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }) {
           withGlobalStyles
           withNormalizeCSS
         >
-          {" "}
+          {" "} 
           <Head>
             <meta charSet="utf-8" />
             <link
@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }) {
               content="width=device-width, initial-scale=1"
             />
             <meta name="description" content="description of website here" />
-            <title>qkwiqq</title>
+            <title>href</title>
           </Head>
           <Header />
           <Container>
