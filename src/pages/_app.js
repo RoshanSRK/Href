@@ -1,6 +1,7 @@
 import { MantineProvider, ColorSchemeProvider, Container } from "@mantine/core";
 import { useState } from "react";
 import Head from "next/head";
+import Header from "@/components/dashboard/Header";
 
 export default function App({ Component, pageProps }) {
   // states for theme
@@ -32,6 +33,7 @@ export default function App({ Component, pageProps }) {
             <meta name="description" content="description of website here" />
             <title>qkwiqq</title>
           </Head>
+          <Header />
           <Container>
             <Component {...pageProps} />
           </Container>
