@@ -8,6 +8,8 @@ import {
   Burger,
   Drawer,
   ScrollArea,
+  useMantineColorScheme,
+  ActionIcon,
   Text,
   Flex,
   rem,
@@ -15,6 +17,7 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import { IconPigMoney } from "@tabler/icons-react";
 import Link from "next/link";
+import { IconMoonStars, IconSun } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -104,14 +107,24 @@ export default function HeaderMegaMenu({ loggedIn }) {
     </Link>
   ));
 
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+
   return (
     <Box pb={60}>
       <Header height={60} px="md">
         <Group position="apart" sx={{ height: "100%" }}>
           <Link href="/" style={{ textDecoration: "none", color: "white" }}>
             <Flex gap={10} align={"center"}>
-              <IconPigMoney size={30} />
-              <Text fs={45} fw={700}>
+              <IconPigMoney
+                color={theme.colorScheme === "dark" ? "white" : "black"}
+                size={30}
+              />
+              <Text
+                color={theme.colorScheme === "dark" ? "white" : "black"}
+                fs={45}
+                fw={700}
+              >
                 {" "}
                 PigMoney
               </Text>
@@ -127,7 +140,18 @@ export default function HeaderMegaMenu({ loggedIn }) {
           </Group>
 
           <Group className={classes.hiddenMobile}>
-            <Button variant="default">{loggedIn ? "Log out" : "Log in"}</Button>
+            <ActionIcon
+              variant="outline"
+              color={dark ? "yellow" : "red"}
+              onClick={() => toggleColorScheme()}
+              title="Toggle color scheme"
+            >
+              {dark ? (
+                <IconSun size="1.1rem" />
+              ) : (
+                <IconMoonStars size="1.1rem" />
+              )}
+            </ActionIcon>{" "}
           </Group>
 
           <Burger
@@ -161,7 +185,18 @@ export default function HeaderMegaMenu({ loggedIn }) {
           />
 
           <Group position="center" grow pb="xl" px="md">
-            <Button variant="default">{loggedIn ? "Log out" : "Log in"}</Button>
+            <ActionIcon
+              variant="outline"
+              color={dark ? "yellow" : "red"}
+              onClick={() => toggleColorScheme()}
+              title="Toggle color scheme"
+            >
+              {dark ? (
+                <IconSun size="1.1rem" />
+              ) : (
+                <IconMoonStars size="1.1rem" />
+              )}
+            </ActionIcon>{" "}
           </Group>
         </ScrollArea>
       </Drawer>
