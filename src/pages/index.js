@@ -48,13 +48,18 @@ export default function Home() {
         />
       </SimpleGrid>
 
-      <Container h={300}>
+      <Title mt={50}>Revenues</Title>
+      <Container>
         {" "}
-        <HorizontalBarChart labelsArray={["ab", "df"]} dataArray={[1, 2]} />
+        <HorizontalBarChart
+          titleName="Revenue since start of month"
+          labelsArray={["Salary", "Bonus", "Gifts"]}
+          dataArray={[20000, 1000, 500]}
+        />
       </Container>
 
       <Title mt={50}>Expenses</Title>
-      <Container size={500}>
+      <Container size={550}>
         <PieChart
           title="Expenses by categories"
           labelsArray={expensesCategories}
