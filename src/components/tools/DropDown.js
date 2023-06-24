@@ -31,9 +31,9 @@ export default function Text(props) {
                     onClick={() => toggle(!visible)}
                 >
                     {text}
-                    <div class='flex flex-col justify-center'>
+                    <div >
                         <ActionIcon>
-                            <ChevronDownIcon class='-mr-1 ml-0 h-5 w-5' aria-hidden='true' />
+                            <ChevronDownIcon  aria-hidden='true' />
                         </ActionIcon>
                     </div>
 
