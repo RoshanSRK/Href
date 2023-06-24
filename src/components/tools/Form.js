@@ -96,9 +96,9 @@ export default function Form() {
             <Grid>
                 <Grid.Col md={6} lg={3}>
                     <Paper style={{ height: '175px' }} shadow="sm" radius="lg" p="md">
-                        <span className="block text-sm mb-1">I have a</span>
+                        <span>I have a</span>
                         <Text
-                            defaultValue={{ name: 'initial', value: calcCtx.initial }}
+                            defaultValue={{ name: 'initial', value: calcCtx?.initial  || 0}}
                             increment={1000}
                             type="money"
                             bounds={{ min: 0, max: 999999999 }}
@@ -108,14 +108,14 @@ export default function Form() {
                 </Grid.Col>
                 <Grid.Col md={6} lg={3}>
                     <Paper style={{ height: '175px' }} shadow="sm" radius="lg" p="md">
-                        <span className="block text-sm mb-1">I&apos;ll add </span>
+                        <span>I&apos;ll add </span>
                         <Text
-                            defaultValue={{ name: 'payment', value: calcCtx.payment }}
+                            defaultValue={{ name: 'payment', value: calcCtx?.payment  || 0 }}
                             increment={1000}
                             type="money"
                             bounds={{ min: 0, max: 999999999 }}
                         />
-                        <span className="block text-sm mt-2">
+                        <span>
                             each{" "}
                             <DropDown
                                 text="month"
@@ -130,15 +130,15 @@ export default function Form() {
                 </Grid.Col>
                 <Grid.Col md={6} lg={3}>
                     <Paper style={{ height: '175px' }} shadow="sm" radius="lg" p="md">
-                        <span className="block text-sm mb-1">I&apos;ll get a</span>
+                        <span>I&apos;ll get a</span>
                         <Text
-                            defaultValue={{ name: "interest", value: calcCtx.interest }}
+                            defaultValue={{ name: "interest", value: calcCtx?.interest || 0 }}
                             increment={1}
                             type="percent"
                             showArrows={true}
                             bounds={{ min: 0.01, max: 35 }}
                         />
-                        <span className="block text-sm mt-2">
+                        <span>
                             return compounded{" "}
                             <DropDown
                                 text="monthly"
@@ -155,15 +155,15 @@ export default function Form() {
                 </Grid.Col>
                 <Grid.Col md={6} lg={3}>
                     <Paper style={{ height: '175px' }} shadow="sm" radius="lg" p="md">
-                    <span className="block text-sm mb-1">I&apos;ve got</span>
+                    <span>I&apos;ve got</span>
                     <Text
-                        defaultValue={{ name: "years", value: 5 }}
+                        defaultValue={{ name: "years", value: CalcCtx?.years  || 5}}
                         increment={1}
                         type="year"
                         showArrows={true}
                         bounds={{ min: 1, max: 100 }}
                     />
-                    <span className="block text-sm mt-2">years to watch my money grow</span>
+                    <span>years to watch my money grow</span>
                 </Paper>
                 </Grid.Col>
             </Grid>
@@ -172,7 +172,7 @@ export default function Form() {
 
             <br />
 
-            <div className="text-center">
+            <div>
                 <Button
                     onClick={buildGraphData}                >
                     <span>Calculate</span>
