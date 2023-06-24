@@ -10,6 +10,7 @@ export default function Form() {
     const [calcCtx, setCalcCtx] = useContext(CalcCtx);
     const [graphCtx, setGraphCtx] = useContext(GraphCtx);
 
+    // build an initial graph based on predefined values
     useEffect(() => {
         buildGraphData();
     }, []);
@@ -24,7 +25,7 @@ export default function Form() {
     const nPer = (payment, years) => {
         return payment * years;
     };
-
+// formula to calculate the compound intereste
     const FV = (initial, interest, nper, payment) => {
         return (
             initial * Math.pow(1 + interest, nper) +
@@ -90,6 +91,7 @@ export default function Form() {
     };
 
     return (
+        // creating the form that the user can modify values to calculate 
         <div className="mt-10">
             <Grid>
                 <Grid.Col md={6} lg={3}>
@@ -174,20 +176,6 @@ export default function Form() {
                 <Button
                     onClick={buildGraphData}                >
                     <span>Calculate</span>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 m-1"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                        />
-                    </svg>
                 </Button>
             </div>
         </div>

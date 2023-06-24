@@ -2,18 +2,9 @@ import React, { useState, Fragment, useContext } from 'react'
 import { CalcCtx } from './context/CalcValueContext'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { ActionIcon,Select } from "@mantine/core";
-// interface FieldObj{
-//     label: string;
-//     value: string;
-// }
-
-// interface FieldDropDownProps {
-//   fields: FieldObj[]
-//   text?: string
-//   property: 'paymentFrequency' | 'compoundFrequency';
-// }
 
 export default function Text(props) {
+    // use of props to pass data to other modules
     const { fields, property, text: defaultText } = props;
     const [visible, setVisible] = useState(false);
     const [text, setText] = useState(defaultText);
@@ -42,7 +33,6 @@ export default function Text(props) {
                     {text}
                     <div class='flex flex-col justify-center'>
                         <ActionIcon>
-
                             <ChevronDownIcon class='-mr-1 ml-0 h-5 w-5' aria-hidden='true' />
                         </ActionIcon>
                     </div>

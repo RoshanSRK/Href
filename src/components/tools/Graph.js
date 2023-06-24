@@ -78,6 +78,7 @@ export default function Graph() {
 
     return (
         <>
+        {/* Second grid to display the calculated data */}
             <Grid>
                 <Grid.Col md={6} lg={4}>
                     <Paper shadow="sm" radius="lg" p="md">
