@@ -1,7 +1,8 @@
 import { MantineProvider, ColorSchemeProvider, Container } from "@mantine/core";
 import { useState } from "react";
 import Head from "next/head";
-import Header from "@/components/dashboard/Header";
+import Header from "@/components/common/Header";
+import FooterSocial from "@/components/common/Footer";
 
 export default function App({ Component, pageProps }) {
   // states for theme
@@ -40,6 +41,7 @@ export default function App({ Component, pageProps }) {
           <Container>
             <Component {...pageProps} />
           </Container>
+          <FooterSocial />
         </MantineProvider>
       </ColorSchemeProvider>
     </>

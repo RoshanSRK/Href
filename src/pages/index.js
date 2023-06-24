@@ -6,6 +6,8 @@ import LineChart from "@/components/dashboard/graphs/LineChart";
 import { ProgressCard } from "@/components/dashboard/ProgressCard";
 import { IconAlertCircle } from "@tabler/icons-react";
 export default function Home() {
+  const titleMarginTop = 50;
+  const titleMarginBottom = 10;
   const allMonths = [
     "January",
     "February",
@@ -33,7 +35,9 @@ export default function Home() {
     <Container>
       <StatsGroup />
 
-      <Title mt={50}>Goals</Title>
+      <Title mb={titleMarginBottom} mt={titleMarginTop}>
+        Goals
+      </Title>
       <SimpleGrid cols={3}>
         <ProgressCard label="Monthly savings goal" />
         <ProgressCard
@@ -48,7 +52,9 @@ export default function Home() {
         />
       </SimpleGrid>
 
-      <Title mt={50}>Revenues</Title>
+      <Title mb={titleMarginBottom} mt={titleMarginTop}>
+        Revenues
+      </Title>
       <Container>
         {" "}
         <HorizontalBarChart
@@ -58,7 +64,9 @@ export default function Home() {
         />
       </Container>
 
-      <Title mt={50}>Expenses</Title>
+      <Title mb={titleMarginBottom} mt={titleMarginTop}>
+        Expenses
+      </Title>
       <Container size={550}>
         <PieChart
           titleName="Expenses by categories"
@@ -74,9 +82,11 @@ export default function Home() {
         title="Total expenses since start of year"
       />
 
-      <Title mt={50}>Recommendations</Title>
+      <Title mb={titleMarginBottom} mt={titleMarginTop}>
+        Recommendations
+      </Title>
       <Alert icon={<IconAlertCircle size="1rem" />} title="Bummer!" color="red">
-        You have spent Rs 1000 more than last month.
+        You have spent Rs 1000 more on entertainment compared to last month.
       </Alert>
     </Container>
   );

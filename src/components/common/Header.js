@@ -14,9 +14,9 @@ import {
   rem,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconPigMoney } from "@tabler/icons-react";
 import Link from "next/link";
 import { IconMoonStars, IconSun } from "@tabler/icons-react";
+import MoLogo from "./MoLogo";
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -113,22 +113,8 @@ export default function HeaderMegaMenu() {
     <Box pb={60}>
       <Header height={60} px="md">
         <Group position="apart" sx={{ height: "100%" }}>
-          <Link href="/" style={{ textDecoration: "none", color: "white" }}>
-            <Flex gap={10} align={"center"}>
-              <IconPigMoney
-                color={theme.colorScheme === "dark" ? "white" : "black"}
-                size={30}
-              />
-              <Text
-                color={theme.colorScheme === "dark" ? "white" : "black"}
-                fs={45}
-                fw={700}
-              >
-                {" "}
-                moFinans
-              </Text>
-            </Flex>
-          </Link>
+          <MoLogo />
+
           <Group
             sx={{ height: "100%" }}
             spacing={0}
@@ -136,7 +122,6 @@ export default function HeaderMegaMenu() {
           >
             {links}
           </Group>
-
           <Group className={classes.hiddenMobile}>
             <ActionIcon
               variant="outline"
