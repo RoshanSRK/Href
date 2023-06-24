@@ -76,6 +76,7 @@ export default function Text(props) {
         })
 
         calcCtx[defaultValue.name] = parseFloat(count);
+        setCalcCtx({ ...calcCtx });
 
         setText(fieldstr)
         setCalcCtx(calcCtx)
@@ -141,51 +142,46 @@ export default function Text(props) {
 
     return (
         <Fragment>
-            <div className='w-auto inline-block'>
-                    <div style={{display:"flex", justifyItems:"center"}}>
-                        {!visible && (
-                            <Fragment>
-                                <strong style={{fontSize:"41px"}}
-                                    onClick={() => toggle(!visible)}
-                                    className='font-bold text-5xl text-slate-800 inline-block underline cursor-pointer'
-                                >
-                                    {text}
-                                </strong>
-                                {showArrows && (
-                                    <div className='flex flex-col justify-center'>
-                                        <ActionIcon>
-                                            <ChevronUpIcon
-                                                onClick={increase}
-                                                class='h-5 w-5 inline-block text-slate-500 cursor-pointer'
-                                            />
-                                        </ActionIcon>
+            <div>
+                <div style={{ display: "flex", justifyItems: "center" }}>
+                    {!visible && (
+                        <Fragment>
+                            <strong style={{ fontSize: "41px" }}
+                                onClick={() => toggle(!visible)}
+                            >
+                                {text}
+                            </strong>
+                            {showArrows && (
+                                <div>
+                                    <ActionIcon>
+                                        <ChevronUpIcon
+                                            onClick={increase}
+                                        />
+                                    </ActionIcon>
 
-                                        <ActionIcon>
-                                            <ChevronDownIcon
-                                                onClick={decrease}
-                                                class='h-5w-5 inline-block text-slate-500 cursor-pointer'
-
-                                            />
-                                        </ActionIcon>
-                                    </div>
-                                )}
-                            </Fragment>
-                        )}
-                        {visible && (
-                            <input
-                                className='border font-bold text-5xl text-slate-800 w-48 shadow-sm'
-                                type="text"
-                                value={count}
-                                autoFocus
-                                onBlur={() => toggle(!visible)}
-                                onChange={change}
-                            />
-                        )}
-                    </div>
+                                    <ActionIcon>
+                                        <ChevronDownIcon
+                                            onClick={decrease}
+                                        />
+                                    </ActionIcon>
+                                </div>
+                            )}
+                        </Fragment>
+                    )}
+                    {visible && (
+                        <input
+                            type="text"
+                            value={count}
+                            autoFocus
+                            onBlur={() => toggle(!visible)}
+                            onChange={change}
+                        />
+                    )}
+                </div>
             </div>
 
 
-            {error && <label className='block mt-2 text-red-500'>{error}</label>}
+            {error && <label>{error}</label>}
 
         </Fragment>
     )

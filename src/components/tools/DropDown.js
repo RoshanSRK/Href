@@ -25,9 +25,8 @@ export default function Text(props) {
 
     return (
         <Fragment>
-            <div className='relative inline-block text-left'>
+            <div>
                 <div style={{display:"flex"}}
-                    className='inline-flex cursor-pointer underline font-bold'
                     onClick={() => toggle(!visible)}
                 >
                     {text}
@@ -39,15 +38,14 @@ export default function Text(props) {
 
                 </div>
                 {visible && (
-                    <div className='z-10 left-0 md:origin-top-right absolute right-0 mt-2 w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none'>
+                    <div>
                         {(() => {
                             if (fields && fields.length > 0) {
                                 return (
-                                    <div className='py-1' role='none'>
+                                    <div role='none'>
                                         <ul>
                                             {fields.map((item, idx) => (
                                                 <li
-                                                    className='text-gray-700 block px-4 py-2 text-sm cursor-pointer hover:bg-gray-50 hover:text-slate-900'
                                                     key={`${item.value}-${idx}`}
                                                     onClick={() => setValue(item.label, item.value)}
                                                 >
