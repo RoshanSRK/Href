@@ -94,6 +94,7 @@ export default function HeaderMegaMenu() {
     { name: "Goals", link: "/goals" },
     { name: "Tools", link: "/tools" },
     { name: "Log", link: "/history" },
+    { name: "Game", link: "/game" },
   ];
 
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
